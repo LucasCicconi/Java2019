@@ -36,14 +36,16 @@ public class tile {
         this.value = value;
         this.x = x;
         this.y = y;
+        //como se fosse a caneta
         tileImage = new BufferedImage(WIDTH,HEIGHT,BufferedImage.TYPE_INT_ARGB);
         //vai desenhar no tile da imagem o plano de fundo e um numero
         drawImage();
     }
     private void drawImage()
     {
-        Graphics2D g = (Graphics2D) image.getGraphics();
-        
+        // como se fosse a caneta
+        Graphics2D g = (Graphics2D) tileImage.getGraphics();
+        // setar varias cores e checar
     }
     
     
