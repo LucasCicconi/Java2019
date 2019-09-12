@@ -28,9 +28,6 @@ public class tile {
     private Color background;
     private Color text;
     private Font font;
-    tileImage = new BufferedImage(WIDTH,HEIGHT,BufferedImage.TYPE_INT_ARGB);
-    
-
     private int x;
     private int y;
     
@@ -39,6 +36,7 @@ public class tile {
         this.value = value;
         this.x = x;
         this.y = y;
+        tileImage = new BufferedImage(WIDTH,HEIGHT,BufferedImage.TYPE_INT_ARGB);
         //vai desenhar no tile da imagem o plano de fundo e um numero
         drawImage();
     }
