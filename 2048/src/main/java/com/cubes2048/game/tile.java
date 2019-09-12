@@ -46,6 +46,14 @@ public class tile {
         // como se fosse a caneta
         Graphics2D g = (Graphics2D) tileImage.getGraphics();
         // setar varias cores e checar
+                if(value ==2){
+            background = new Color(0xe9e9e9);
+            text= new Color(0x000000);
+        }
+        else if 
+        {
+                    
+        }
     }
     
     
