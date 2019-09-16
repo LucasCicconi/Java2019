@@ -43,6 +43,9 @@ public class teclado {
         pressed[e.getKeyCode()] = false;
     }
     
+    public static boolean typed(intKeyEvent){
+        //Rever video 4 6:28.
+        return !pressed[KeyEvent] && prev[KeyEvent];
     
     }
     
