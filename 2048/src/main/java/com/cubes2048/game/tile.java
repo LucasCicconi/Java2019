@@ -136,4 +136,16 @@ public class tile {
             int auxImpY = HEIGHT / 2 + auxiliarImpressao.getMessageHeight(""+value, font, g)/2;//é + pq começa em baixo do lado esquerdo
             g.drawString(""+value,auxImpX,auxImpY);
             g.dispose();
-    }
+         }
+    
+        public void update()
+        {
+        
+        }
+    
+        public void render(Graphics2D g)
+        {
+            g.drawImage(tileImage,x,y,null);
+            
+        }
+}
