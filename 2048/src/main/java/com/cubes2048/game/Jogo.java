@@ -29,6 +29,7 @@ public class Jogo extends JPanel implements KeyListener,Runnable{
     private Thread jogo;
     private boolean running;
     private BufferedImage image = new BufferedImage(WIDTH,HEIGHT,BufferedImage.TYPE_INT_RGB);
+    private GameBoard board;
    
     private long TempoInicial;
     private long elapsed;
@@ -38,10 +39,12 @@ public class Jogo extends JPanel implements KeyListener,Runnable{
         setFocusable(true);
         setPreferredSize(new Dimension(WIDTH,HEIGHT));
         addKeyListener(this);
+        
+        board = new GameBoard(WIDTH / 2 - GameBoard.BOARD_WIDTH/2,HEIGHT - GameBoard.BOARD_HEIGHT - 10);
     }
     private void update()
     {
-        
+        board.update();
     }
     
     private void render()
@@ -51,6 +54,7 @@ public class Jogo extends JPanel implements KeyListener,Runnable{
         g.setColor(Color.white);
         g.fillRect(0,0,WIDTH,HEIGHT);
         //render board
+        board.render(g);
         g.dispose();
         
         Graphics2D g2d = (Graphics2D)getGraphics();
