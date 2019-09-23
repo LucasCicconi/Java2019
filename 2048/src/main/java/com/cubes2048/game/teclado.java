@@ -21,16 +21,12 @@ public class teclado {
     }
     public static void update()
     {
-    for( int i=0;i<8;i++)
+    for( int i=0;i<4;i++)
         {
          if(i==0)anterior[KeyEvent.VK_LEFT] =pressed[KeyEvent.VK_LEFT];
          if(i==1)anterior[KeyEvent.VK_RIGHT] =pressed[KeyEvent.VK_RIGHT];
          if(i==2)anterior[KeyEvent.VK_UP] =pressed[KeyEvent.VK_UP];
          if(i==3)anterior[KeyEvent.VK_DOWN] =pressed[KeyEvent.VK_DOWN];
-         if(i==4)anterior[KeyEvent.VK_LEFT] =pressed[KeyEvent.VK_A];
-         if(i==5)anterior[KeyEvent.VK_RIGHT] =pressed[KeyEvent.VK_D];
-         if(i==6)anterior[KeyEvent.VK_UP] =pressed[KeyEvent.VK_W];
-         if(i==7)anterior[KeyEvent.VK_DOWN] =pressed[KeyEvent.VK_S];
         }
     }
     public static void KeyPressed(KeyEvent e)
@@ -43,9 +39,9 @@ public class teclado {
         pressed[e.getKeyCode()] = false;
     }
     
-    public static boolean typed(intKeyEvent){
+    public static boolean typed(int KeyEvent){
         //Rever video 4 6:28.
-        return !pressed[KeyEvent] && prev[KeyEvent];
+        return !pressed[KeyEvent] && anterior[KeyEvent];
     
     }
     
