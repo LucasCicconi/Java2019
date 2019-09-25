@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
+import java.util.Random;
 
 /**
  *
@@ -19,7 +20,7 @@ public class GameBoard {
     public static final int ROWS = 4;
     public static final int COLS = 4;
     
-    private final int startingRiles = 2;
+    private final int startingTiles = 2;
     private tile[][] board;
     private boolean dead;
     private boolean won;
@@ -65,11 +66,13 @@ public class GameBoard {
                 
             }
         }
+    }
     private void start()
     {
+
         for(int i=0;i< startingTiles; i++)
         {
-            spawnRandom()
+            spawnRandom();
         }
         
     }   
@@ -80,14 +83,14 @@ public class GameBoard {
         
      while(notValid)
      {
-         int location = random.nexInt(ROWS * COLS);
+         int location = random.nextInt(ROWS * COLS);
          int row = location/ROWS;
          int col= location % COLS;
-         Tile current = board[row][col];
-         if(curent == null)
+         tile current = board[row][col];
+         if(current == null)
          {
              int value = random.nextInt(10)< 9 ? 2:4;
-             Tile tile = new Tile(value, getTileX(col),getTileY(row));
+             tile tile = new tile(value, getTileX(col),getTileY(row));
              board[row][col] = tile;
              notValid = false;
          }
@@ -97,18 +100,17 @@ public class GameBoard {
     
         public int getTileX(int col)
         {
-        return SPACING + col* Tile.WIDTH + col*SPACING;
+        return SPACING + col* tile.WIDTH + col*SPACING;
         }
         
         public int getTileY(int row)
         {
-        return SPACING + row* Tile.WIDTH + row*SPACING;
+        return SPACING + row* tile.WIDTH + row*SPACING;
         }
         
-    }
             
 
-    public void render(Graphics2D g) 
+    public void render (Graphics2D g) 
     {
         Graphics2D g2d = (Graphics2D) finalBoard.getGraphics();
         g2d.drawImage(gameBoard,0,0,null);
@@ -118,7 +120,7 @@ public class GameBoard {
         {
             for(int col=0;col < COLS;col++)
             {
-                Tile current = board[row][col];
+                tile current = board[row][col];
                 if(current == null)continue;
                 current.render(g2d);
             }
@@ -137,7 +139,7 @@ public class GameBoard {
         {
             for(int col=0;col<COLS;col++)
             {
-                Tile current= board[row][col];
+                tile current= board[row][col];
                 if(current == null)continue;
                 current.update();
                 //reseta a posiçao
