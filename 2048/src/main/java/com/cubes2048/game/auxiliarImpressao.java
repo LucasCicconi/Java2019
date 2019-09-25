@@ -5,6 +5,11 @@
  */
 package com.cubes2048.game;
 
+import java.awt.Font;
+import java.awt.Graphics2D;
+import java.awt.font.TextLayout;
+import java.awt.geom.Rectangle2D;
+
 /**
  *
  * @author 18706986
@@ -28,3 +33,4 @@ public class auxiliarImpressao {
    TextLayout tl = new TextLayout(message,font,g.getFontRenderContext());
    return(int)tl.getBounds().getHeight();
     }
+}
