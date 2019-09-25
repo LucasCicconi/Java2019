@@ -44,6 +44,7 @@ public class teclado {
         return !pressed[KeyEvent] && anterior[KeyEvent];
     
     }
+}
     
  
     
