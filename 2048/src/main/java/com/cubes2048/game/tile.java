@@ -148,4 +148,8 @@ public class tile {
             g.drawImage(tileImage,x,y,null);
             
         }
+    public int getValue()
+    {
+        return value;
+    }
 }
