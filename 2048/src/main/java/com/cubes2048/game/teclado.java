@@ -29,6 +29,7 @@ public class teclado {
          if(i==3)anterior[KeyEvent.VK_DOWN] =pressed[KeyEvent.VK_DOWN];
         }
     }
+    
     public static void KeyPressed(KeyEvent e)
     {
         pressed[e.getKeyCode()] = true;
@@ -40,7 +41,7 @@ public class teclado {
     }
     
     public static boolean typed(int KeyEvent){
-        //Rever video 4 6:28.
+       
         return !pressed[KeyEvent] && anterior[KeyEvent];
     
     }
