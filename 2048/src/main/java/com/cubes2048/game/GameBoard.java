@@ -127,7 +127,7 @@ public class GameBoard {
             
         }
         
-        g.drawImage(finalBoard,x,150,null);
+        g.drawImage(finalBoard,x,300,null);
         g2d.dispose();
         
     }
