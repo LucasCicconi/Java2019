@@ -42,9 +42,13 @@ public class Jogo extends JPanel implements KeyListener,Runnable{
         
         board = new GameBoard(WIDTH / 2 - GameBoard.BOARD_WIDTH/2,HEIGHT - GameBoard.BOARD_HEIGHT - 10);
     }
+    
+    
     private void update()
     {
         board.update();
+        teclado.update();
+      
     }
     
     private void render()
@@ -135,18 +139,21 @@ public class Jogo extends JPanel implements KeyListener,Runnable{
     
     
      @Override
-    public void keyTyped(KeyEvent e) {
+    public void keyTyped(KeyEvent e)
+    {
        
     }
 
     @Override
-    public void keyPressed(KeyEvent e) {
-        
+    public void keyPressed(KeyEvent e)
+    {
+        teclado.KeyPressed(e);
     }
 
     @Override
-    public void keyReleased(KeyEvent e) {
-        
+    public void keyReleased(KeyEvent e) 
+    {
+        teclado.KeyReleased(e);
     }
     
     
