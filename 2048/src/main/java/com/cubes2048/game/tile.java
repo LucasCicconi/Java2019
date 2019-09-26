@@ -28,14 +28,18 @@ public class tile {
     private Color background;
     private Color text;
     private Font font;
+    private Point irPara;
     private int x;
     private int y;
     
+    private boolean PodeCombinar = true;
+
     public tile(int value,int x, int y)
     {
         this.value = value;
         this.x = x;
         this.y = y;
+        irPara = new Point(x,y);
         //como se fosse a caneta
         tileImage = new BufferedImage(WIDTH,HEIGHT,BufferedImage.TYPE_INT_ARGB);
         //vai desenhar no tile da imagem o plano de fundo e um numero
@@ -152,4 +156,47 @@ public class tile {
     {
         return value;
     }
+    
+    public void setValue(int value)
+    {
+    this.value= value;
+    drawImage();
+    
+    }
+    
+    public boolean PodeCombinar()
+    {
+        return PodeCombinar;
+    }
+
+    public void setPodeCombinar(boolean podeCombinar)
+    {
+        this.PodeCombinar = podeCombinar;
+    }
+
+    public Point getIrPara() {
+        return irPara;
+    }
+
+    public void setIrPara(Point irPara) {
+        this.irPara = irPara;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+ 
+    
 }
