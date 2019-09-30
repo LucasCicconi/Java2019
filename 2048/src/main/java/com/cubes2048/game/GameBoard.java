@@ -414,25 +414,25 @@ public class GameBoard {
     
     private void checkKeys()
     {
-        if(teclado.typed(KeyEvent.VK_LEFT))
+        if(teclado.typed(KeyEvent.VK_LEFT)  || teclado.typed(KeyEvent.VK_A))
         {
         //manda os quadrados para a esquerda
             moveTiles(Direction.LEFT);
             if(!hasStarted)hasStarted = true;
         }
-        if(teclado.typed(KeyEvent.VK_RIGHT))
+        if(teclado.typed(KeyEvent.VK_RIGHT) || teclado.typed(KeyEvent.VK_D))
         {
         //manda os quadrados para a direita
             moveTiles(Direction.RIGHT);
             if(!hasStarted)hasStarted = true;
         }
-        if(teclado.typed(KeyEvent.VK_UP))
+        if(teclado.typed(KeyEvent.VK_UP) || teclado.typed(KeyEvent.VK_W))
         {
         //manda os quadrados para cima
             moveTiles(Direction.UP);
             if(!hasStarted)hasStarted = true;
         }
-        if(teclado.typed(KeyEvent.VK_DOWN))
+        if(teclado.typed(KeyEvent.VK_DOWN) || teclado.typed(KeyEvent.VK_S))
         {
         //manda os quadrados para baixo
             moveTiles(Direction.DOWN);
