@@ -8,6 +8,8 @@ package com.cubes2048.game;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
 /**
@@ -32,6 +34,12 @@ public class tile {
     private int x;
     private int y;
     
+    private boolean animaçaoInicial = true;
+    private double scaleFirst= 0.1;
+    private BufferedImage imagemComeço;
+    private boolean animaçaoCombinaçao ;
+    private double scaleCombine = 1.2;
+    private BufferedImage imagemCombinaçao;
     private boolean PodeCombinar = true;
 
     public tile(int value,int x, int y)
@@ -42,6 +50,8 @@ public class tile {
         irPara = new Point(x,y);
         //como se fosse a caneta
         tileImage = new BufferedImage(WIDTH,HEIGHT,BufferedImage.TYPE_INT_ARGB);
+        imagemComeço = new BufferedImage(WIDTH,HEIGHT,BufferedImage.TYPE_INT_ARGB);
+        imagemCombinaçao = new BufferedImage(WIDTH * 2,HEIGHT *2,BufferedImage.TYPE_INT_ARGB);
         //vai desenhar no tile da imagem o plano de fundo e um numero
         drawImage();
     }
@@ -144,13 +154,56 @@ public class tile {
     
         public void update()
         {
+            if(animaçaoInicial)
+            {
+                //Para o scale
+                AffineTransform transform= new AffineTransform();
+               //
+                transform.translate(WIDTH / 2 - scaleFirst * WIDTH / 2 , HEIGHT / 2 - scaleFirst * HEIGHT / 2);
+                transform.scale(scaleFirst,scaleFirst);
+                Graphics2D g2d = (Graphics2D)imagemComeço.getGraphics();
+                g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+                g2d.setColor(new Color (0,0,0,0));
+                g2d.fillRect(0,0,WIDTH,HEIGHT);
+                g2d.drawImage(tileImage, transform,null);
+                scaleFirst += 0.05;
+                g2d.dispose();
+                if(scaleFirst >= 1)animaçaoInicial = false;
+            }
+            else if(animaçaoCombinaçao)
+            {
+                AffineTransform transform= new AffineTransform();
+                transform.translate(WIDTH / 2 - scaleCombine * WIDTH / 2 , HEIGHT / 2 - scaleCombine * HEIGHT / 2);
+                transform.scale(scaleCombine,scaleCombine);
+                Graphics2D g2d = (Graphics2D)imagemCombinaçao.getGraphics();
+                g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+                g2d.setColor(new Color (0,0,0,0));
+                g2d.fillRect(0,0,WIDTH,HEIGHT);
+                g2d.drawImage(tileImage, transform,null);
+                scaleCombine -= 0.025;
+                g2d.dispose();
+                if(scaleCombine <= 1)animaçaoCombinaçao = false;
+            
+            
+            }
         
         }
     
         public void render(Graphics2D g)
         {
-            g.drawImage(tileImage,x,y,null);
-            
+            if(animaçaoInicial)
+            {
+                g.drawImage(imagemComeço,x,y,null);
+            }
+            else if(animaçaoCombinaçao)
+            {
+                g.drawImage(imagemCombinaçao,(int)(x + WIDTH/2 - scaleCombine * WIDTH),
+                                             (int)(y + + HEIGHT/2 - scaleCombine * HEIGHT),null);
+            }
+            else
+            {
+                g.drawImage(tileImage,x,y,null);
+            }
         }
     public int getValue()
     {
@@ -196,6 +249,14 @@ public class tile {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    public boolean isAnimaçaoCombinaçao() {
+        return animaçaoCombinaçao;
+    }
+
+    public void setAnimaçaoCombinaçao(boolean animaçaoCombinaçao) {
+        this.animaçaoCombinaçao = animaçaoCombinaçao;
     }
  
     
