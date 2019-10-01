@@ -224,7 +224,7 @@ public class GameBoard {
             podeMover = true;
             board[newRow - direcaoVertical][newCol - direcaoHorizontal] = null;
             board[newRow][newCol].setIrPara(new Point(newRow,newCol));
-           // board[newRow][newCol].setCombineAnimation(true);
+            board[newRow][newCol].setAnimaçaoCombinaçao(true);
            //colocar score
         }    
         else
