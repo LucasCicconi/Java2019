@@ -234,6 +234,37 @@ public class GameBoard
 
     public void update()
     {
+        if(ganhou==true)
+        {
+        for (int i=0;i<4;i++)
+        {
+            for(int j=0;j<4;j++)
+            {
+		board[i][j]=null;
+            }
+        }
+        ganhou=false;
+        Random random = new Random();
+         int location = random.nextInt(ROWS * COLS);
+         int row = location/ROWS;
+         int col= location % COLS;
+         tile current = board[row][col];
+         if(current == null)
+         {
+             int value =random.nextInt(10)< 9 ? 2:4; ;
+             tile tile = new tile(value, getTileX(col),getTileY(row));
+             board[row][col] = tile;
+        }
+        
+        }
+        
+        if(perdeu==true)
+        {
+            JOptionPane.showMessageDialog(null, "AHHHHHHHH, VOCE PERDEU :(");;
+        
+        perdeu=false;
+        }
+        
         checkKeys();
         
         if(score >= HighScore){
