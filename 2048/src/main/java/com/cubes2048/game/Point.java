@@ -1,15 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.cubes2048.game;
 
-/**
- *
- * @author usuario
+/** 
+    @version 1.1
+    @see Ponteiro de posição
  */
-public class Point {
+
+public class Point 
+{
     
     public int row;
     public int col;

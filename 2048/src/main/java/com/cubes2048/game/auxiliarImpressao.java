@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.cubes2048.game;
 
 import java.awt.Font;
@@ -10,11 +5,13 @@ import java.awt.Graphics2D;
 import java.awt.font.TextLayout;
 import java.awt.geom.Rectangle2D;
 
-/**
- *
- * @author 18706986
+/** 
+    @version 1.1
+    @see Formatação para centralizar os numeros nos quadrados
  */
-public class auxiliarImpressao {
+
+public class auxiliarImpressao
+{
  
     private auxiliarImpressao(){};
     

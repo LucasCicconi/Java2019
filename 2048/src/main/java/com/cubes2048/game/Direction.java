@@ -1,17 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.cubes2048.game;
 
-/**
- *
- * @author 18706986
+/** 
+    @version 1.2
+    @see Direções para uso nas Classes
  */
-public enum Direction {
+
+ enum Direction 
+ {
     LEFT,
     RIGHT,
     UP,
     DOWN,
 }
+
+//V 1.2    02/10/19

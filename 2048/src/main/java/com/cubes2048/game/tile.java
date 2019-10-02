@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.cubes2048.game;
 
 import java.awt.Color;
@@ -12,11 +7,13 @@ import java.awt.RenderingHints;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
-/**
- *
- * @author 18706986
+/** 
+    @version 1.1
+    @see Classe para Exibir as informações na tela
  */
-public class tile {
+
+public class tile
+{
     //public porque a classe do tabuleiro precisa saber essas variaveis
     public static final int WIDTH = 80;   
     public static final int HEIGHT = 80;
@@ -55,6 +52,7 @@ public class tile {
         //vai desenhar no tile da imagem o plano de fundo e um numero
         drawImage();
     }
+
     private void drawImage()
     {
         // como se fosse a caneta
@@ -205,6 +203,7 @@ public class tile {
                 g.drawImage(tileImage,x,y,null);
             }
         }
+        
     public int getValue()
     {
         return value;

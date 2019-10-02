@@ -1,21 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.cubes2048.game;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.Writer;
 import java.util.Random;
 
-/**
- *
- * @author 18706986
+/** 
+    @version 1.1
+    @see Classe do Tabuleiro do jogo
  */
-public class GameBoard {
+
+public class GameBoard 
+{
     
     public static final int ROWS = 4;
     public static final int COLS = 4;
@@ -28,27 +31,112 @@ public class GameBoard {
     private BufferedImage finalBoard;
     private int x;
     private int y;
+    private int score = 0;
+    private int HighScore = 0;
+
+    //biblioteca n ta funcionando no visual Code
+    private Font ScoreFont;
     
     private static int SPACING = 10;
     public static int BOARD_WIDTH = (COLS +1)* SPACING +COLS*tile.WIDTH;
     public static int BOARD_HEIGHT =(ROWS+1)*SPACING+ROWS*tile.HEIGHT;
     
     private boolean hasStarted;
+
+    //Variaveis para salvar
+    private String LocalDoSave;
+    private String NomePasta = "Save";
  
     public GameBoard(int x, int y)
     {
+
+        try
+        {
+        LocalDoSave = GameBoard.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
+        //LocalDoSave = System.getProperty("user.home")+"\\foldername";
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        //ScoreFont = Game.main.deriveFont(24F);
         this.x = x;
         this.y = y;
         board = new tile[ROWS][COLS];
         gameBoard = new BufferedImage(BOARD_WIDTH, BOARD_HEIGHT, BufferedImage.TYPE_INT_RGB);
         finalBoard = new BufferedImage(BOARD_WIDTH, BOARD_HEIGHT, BufferedImage.TYPE_INT_RGB);
         
+        loadHighScore();
         createBoardImage(); 
         start();
         
     }
+
+    private void criarSave()
+    {
+        try{
+            File file = new File(LocalDoSave, NomePasta);
+
+            FileWriter output = new FileWriter(file);
+            BufferedWriter writer = new BufferedWriter(output);
+            writer.write("" + 0);
+            //criando tempo mais rapido;
+            writer.close();
+        }
+
+        catch(Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+    private void loadHighScore()
+    {
+
+        try{
+            File f = new File(LocalDoSave, NomePasta);
+            if(if.isFile()){
+                criarSave();
+            }
+
+            BufferedReader reader = new BufferedReader(new inputStreamReader(new FileInputStream(f)));
+            HighScore = Integer.parseInt(reader.readLine());
+
+            //ler tempo mais rapido
+            reader.close();
+
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+    private void setHighScore()
+    {
+        FileWriter output = null;
+
+        try{
+
+        File f = new File(LocalDoSave, NomePasta);
+
+            output = new FileWriter(f);
+            BufferedWriter write = new BufferedWriter(output);
+
+
+            writer.write("" + HighScore);
+            
+            
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+
+    }
     
-    private void createBoardImage(){
+    private void createBoardImage()
+    {
         Graphics2D g = (Graphics2D)gameBoard.getGraphics();
         g.setColor(Color.darkGray);
         g.fillRect(0,0,BOARD_WIDTH,BOARD_HEIGHT);
@@ -131,11 +219,25 @@ public class GameBoard {
         g.drawImage(finalBoard,x,250,null);
         g2d.dispose();
         
+
+        //Caixa do Score
+        g.setColor(Color.lightGray);
+        g.serFont(ScoreFont);
+        g.drawString("" + score, 30, 40);
+        g.setColor(Color.red);
+        g.drawSting("Best: " + HighScore, Game.WIDTH - DrawUtils.getMessageWidth("Best: " + HighScore, ScoreFont, g) - 20, 40);
+
+
     }
+
     public void update()
     {
         checkKeys();
         
+        if(score >= HighScore){
+            HighScore = score;
+        }
+
         for(int row = 0; row<ROWS;row++)
         {
             for(int col=0;col<COLS;col++)
@@ -225,7 +327,9 @@ public class GameBoard {
             board[newRow - direcaoVertical][newCol - direcaoHorizontal] = null;
             board[newRow][newCol].setIrPara(new Point(newRow,newCol));
             board[newRow][newCol].setAnimaçaoCombinaçao(true);
-           //colocar score
+        
+            //Score
+            score += board[newRow][newCol].getValue();
         }    
         else
         {
@@ -378,7 +482,8 @@ public class GameBoard {
             }
             
             perdeu = true;
-            //fzr o score
+            
+            setHighScore(); 
         }
         
     private boolean checarTilesEmVolta(int row, int col, tile current)

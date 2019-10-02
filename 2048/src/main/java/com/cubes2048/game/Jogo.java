@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.cubes2048.game;
 
 import java.awt.Color;
@@ -15,10 +10,11 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
 
-/**
- *
- * @author 18706986
+/** 
+    @version 1.1
+    @see Classe Principal do Jogo
  */
+
 public class Jogo extends JPanel implements KeyListener,Runnable{
 
     private static final long serialVersionUID = 1L;
@@ -34,6 +30,7 @@ public class Jogo extends JPanel implements KeyListener,Runnable{
     private long TempoInicial;
     private long elapsed;
     private boolean set;
+
     public Jogo()
     {
         setFocusable(true);
@@ -69,7 +66,8 @@ public class Jogo extends JPanel implements KeyListener,Runnable{
    
 
     @Override
-    public void run() {
+    public void run() 
+    {
         
         int fps=0,updates =0;
         long fpsTimer =System.currentTimeMillis();
@@ -112,8 +110,10 @@ public class Jogo extends JPanel implements KeyListener,Runnable{
                     }
             }
         }
+
         //FPS Timer
-        if(System.currentTimeMillis()- fpsTimer >1000){
+        if(System.currentTimeMillis()- fpsTimer >1000)
+        {
             System.out.printf("%d fps %d updates",fps,updates);
             System.out.println();
             fps = 0;
@@ -130,6 +130,7 @@ public class Jogo extends JPanel implements KeyListener,Runnable{
         jogo = new Thread(this,"jogo");
         jogo.start();    
     }
+    
     public synchronized void stop()
     {
         if(!running)return; 

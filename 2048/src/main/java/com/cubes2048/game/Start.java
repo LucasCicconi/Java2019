@@ -1,16 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.cubes2048.game;
 
 import javax.swing.JFrame;
-/**
- *
- * @author 18706986
+
+/** 
+    @author Lucas Cicconi Ferreira  17121393 || Derek, Freire Quaresma  18706986
+    @version 1.1
+    @see Classe Principal do Jogo
  */
-public class Start {
+
+public class Start 
+{
     
     public static void main(String[] args)
     {
