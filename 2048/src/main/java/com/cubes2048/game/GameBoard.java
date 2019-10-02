@@ -1,6 +1,7 @@
 package com.cubes2048.game;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
@@ -9,6 +10,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
+import java.io.InputStreamReader;
 import java.io.Writer;
 import java.util.Random;
 
@@ -96,11 +98,11 @@ public class GameBoard
 
         try{
             File f = new File(LocalDoSave, NomePasta);
-            if(if.isFile()){
+            if(!f.isFile()){
                 criarSave();
             }
 
-            BufferedReader reader = new BufferedReader(new inputStreamReader(new FileInputStream(f)));
+            BufferedReader reader = new BufferedReader (new InputStreamReader (new FileInputStream(f) ) );
             HighScore = Integer.parseInt(reader.readLine());
 
             //ler tempo mais rapido
@@ -122,7 +124,7 @@ public class GameBoard
         File f = new File(LocalDoSave, NomePasta);
 
             output = new FileWriter(f);
-            BufferedWriter write = new BufferedWriter(output);
+            BufferedWriter writer = new BufferedWriter(output);
 
 
             writer.write("" + HighScore);
@@ -222,10 +224,10 @@ public class GameBoard
 
         //Caixa do Score
         g.setColor(Color.lightGray);
-        g.serFont(ScoreFont);
+        g.setFont(ScoreFont);
         g.drawString("" + score, 30, 40);
         g.setColor(Color.red);
-        g.drawSting("Best: " + HighScore, Game.WIDTH - DrawUtils.getMessageWidth("Best: " + HighScore, ScoreFont, g) - 20, 40);
+        g.drawString("Best: " + HighScore, Jogo.WIDTH - auxiliarImpressao.getMessageWidth("Best: " + HighScore, ScoreFont, g) - 20, 40);
 
 
     }
@@ -519,6 +521,23 @@ public class GameBoard
     
     private void checkKeys()
     {
+        
+        if(teclado.typed(KeyEvent.VK_X))
+        {
+            //Spawna um 1024 na tela
+         Random random = new Random();
+         int location = random.nextInt(ROWS * COLS);
+         int row = location/ROWS;
+         int col= location % COLS;
+         tile current = board[row][col];
+         if(current == null)
+         {
+             int value = 1024;
+             tile tile = new tile(value, getTileX(col),getTileY(row));
+             board[row][col] = tile;
+        }
+        }
+        
         if(teclado.typed(KeyEvent.VK_LEFT)  || teclado.typed(KeyEvent.VK_A))
         {
         //manda os quadrados para a esquerda
