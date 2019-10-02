@@ -3,7 +3,7 @@ package com.cubes2048.game;
 import java.awt.event.KeyEvent;
 
 /** 
-    @version 1.1
+    @version 1.2
     @see Classe para pegar a tecla pressionada pelo usuario
  */
 

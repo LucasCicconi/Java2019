@@ -13,9 +13,10 @@ import java.io.FileWriter;
 import java.io.InputStreamReader;
 import java.io.Writer;
 import java.util.Random;
+import javax.swing.JOptionPane;
 
 /** 
-    @version 1.1
+    @version 1.3
     @see Classe do Tabuleiro do jogo
  */
 

@@ -1,7 +1,7 @@
 package com.cubes2048.game;
 
 /** 
-    @version 1.2
+    @version 1.3
     @see Direções para uso nas Classes
  */
 
@@ -13,4 +13,4 @@ package com.cubes2048.game;
     DOWN,
 }
 
-//V 1.2    02/10/19
+//V 1.3    02/10/19

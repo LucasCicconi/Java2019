@@ -8,7 +8,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
 /** 
-    @version 1.1
+    @version 1.4
     @see Classe para Exibir as informações na tela
  */
 
