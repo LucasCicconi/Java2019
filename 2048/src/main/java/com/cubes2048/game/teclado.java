@@ -29,7 +29,7 @@ public class teclado {
          if(i==5)   anterior[KeyEvent.VK_D] = pressed[KeyEvent.VK_D];
          if(i==6)   anterior[KeyEvent.VK_W]    = pressed[KeyEvent.VK_W];
          if(i==7)   anterior[KeyEvent.VK_S]  = pressed[KeyEvent.VK_S];
-         if(i==8)   anterior[KeyEvent.VK_X]  = pressed[KeyEvent.Vk_X];
+         if(i==8)   anterior[KeyEvent.VK_X]  = pressed[KeyEvent.VK_X];
         }
     }
     
