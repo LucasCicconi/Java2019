@@ -1,7 +1,8 @@
 # Java2019
 •Criação do jogo 2048 em Java 
 
-•Nesse Repositório se encontra o Projeto do Jogo 2048.
+•Nesse Repositório se encontra o Projeto do Jogo 2048.  
+
 •O jogo pode ser jogado pelas Teclas W A S D  e pelas setas do teclado.
 •O Jogo possue um score Basico, criando um aqruivo save, porem nao armazendo o score.
 •O jogo possui animçaã na criacaçao de peças inicialmente e na junçao de peças, varinado tambem suas cores.
