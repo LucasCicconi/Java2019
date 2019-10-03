@@ -16,7 +16,7 @@ import java.util.Random;
 import javax.swing.JOptionPane;
 
 /** 
-    @version 1.3
+    @version 1.1
     @see Classe do Tabuleiro do jogo
  */
 
@@ -236,7 +236,6 @@ public class GameBoard
     public void update()
     {
         if(ganhou==true)
-	JOptionPane.showMessageDialog(null, "UHULLLL, VOCE GANHOUU!!");;
         {
         for (int i=0;i<4;i++)
         {
@@ -245,6 +244,7 @@ public class GameBoard
 		board[i][j]=null;
             }
         }
+        JOptionPane.showMessageDialog(null, "UHULLLLLLL, VOCE GANHOUUU!!");;
         ganhou=false;
         Random random = new Random();
          int location = random.nextInt(ROWS * COLS);
@@ -263,14 +263,15 @@ public class GameBoard
         if(perdeu==true)
         {
             JOptionPane.showMessageDialog(null, "AHHHHHHHH, VOCE PERDEU :(");;
-		
-        for (int i=0;i<4;i++)
+            for (int i=0;i<4;i++)
         {
             for(int j=0;j<4;j++)
             {
 		board[i][j]=null;
             }
-	}
+        }
+        
+        perdeu=false;
         Random random = new Random();
          int location = random.nextInt(ROWS * COLS);
          int row = location/ROWS;
@@ -282,8 +283,6 @@ public class GameBoard
              tile tile = new tile(value, getTileX(col),getTileY(row));
              board[row][col] = tile;
         }
-        
-        perdeu=false;
         }
         
         checkKeys();
