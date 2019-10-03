@@ -19,7 +19,7 @@ public class teclado {
     public static void update()
     {
 
-    for( int i=0;i<8;i++)
+    for( int i=0;i<9;i++)
         {
          if(i==0)   anterior[KeyEvent.VK_LEFT] = pressed[KeyEvent.VK_LEFT];
          if(i==1)   anterior[KeyEvent.VK_RIGHT] = pressed[KeyEvent.VK_RIGHT];
