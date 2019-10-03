@@ -246,6 +246,7 @@ public class GameBoard
         }
         JOptionPane.showMessageDialog(null, "UHULLLLLLL, VOCE GANHOUUU!!");;
         ganhou=false;
+	score=0;
         Random random = new Random();
          int location = random.nextInt(ROWS * COLS);
          int row = location/ROWS;
@@ -272,6 +273,7 @@ public class GameBoard
         }
         
         perdeu=false;
+	score=0;
         Random random = new Random();
          int location = random.nextInt(ROWS * COLS);
          int row = location/ROWS;
