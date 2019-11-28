@@ -24,6 +24,7 @@
 
 #Utilizando WebService:
 *Coloque a pasta Servidor2048 junto com a pasta do jogo e adicione um .txt com nome de "arquivo".
+*Coloque as 3 bibliotecas utilizadas no Json dentro do jogo.
 *execute o jogo e depois o servidor em modo de teste (local host).
 *Em vez de usar o teclado para mover, escreva "cima", "baixo", "esquerda", "direita" para movimentar o jogo.
 *verificar caminho do .txt no servidor e no webservice do jogo.
